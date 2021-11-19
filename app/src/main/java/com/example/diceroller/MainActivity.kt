@@ -3,6 +3,7 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             val toast = Toast.makeText(this,"Dice Rolled!", Toast.LENGTH_SHORT).show()
             rollDice()
             main()
+
         }
         //main()
     }
@@ -25,8 +27,49 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
+        val resultRoll = diceRoll.toInt()
+        val diceImage :ImageView = findViewById(R.id.imageView)
+
+        when(resultRoll){
+            1 -> diceImage.setImageResource(R.drawable.dice_1)
+            2 -> diceImage.setImageResource(R.drawable.dice_2)
+            3 -> diceImage.setImageResource(R.drawable.dice_3)
+            4 -> diceImage.setImageResource(R.drawable.dice_4)
+            5 -> diceImage.setImageResource(R.drawable.dice_5)
+            6 -> diceImage.setImageResource(R.drawable.dice_6)
+        }
+        diceImage.contentDescription = diceRoll.toString()
+
+        /*
+        if (resultRoll==1){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_1)
+        }else if(resultRoll==2){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_2)
+        }else if (resultRoll==3){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_3)
+        }else if (resultRoll==4){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_4)
+        }else if (resultRoll==5){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_5)
+        }else if (resultRoll==6){
+            val diceImage :ImageView = findViewById(R.id.imageView)
+            diceImage.setImageResource(R.drawable.dice_6)
+        }
+
+         */
+
+
+        /*
+
         val resultTextView: TextView = findViewById(R.id.textView)
         resultTextView.text=diceRoll.toString()
+
+         */
 
     }
 }
